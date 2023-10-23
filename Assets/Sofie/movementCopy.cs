@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class movementCopy : MonoBehaviour
 {
 
     Rigidbody2D rb;
@@ -29,8 +29,8 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!dash_pause) 
-        { 
+        if (!dash_pause)
+        {
             MoveLeftAndRight();
             Jump();
             GravityAdjust();
@@ -81,7 +81,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0 && !isGrounded)
         {
-            CancelInvoke(); 
+            CancelInvoke();
             dash_pause = true;
             rb.gravityScale = 0.0f;
             rb.velocity = new Vector2(0, 0);
@@ -148,5 +148,4 @@ public class Movement : MonoBehaviour
         }
 
     }
-
 }
