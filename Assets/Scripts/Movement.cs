@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     public int dashes = 5;
 
     float velocityX;
+    float velX;
     bool dash_pause = false;
 
     // Start is called before the first frame update
@@ -47,7 +48,8 @@ public class Movement : MonoBehaviour
             dash_pause = true;
             CancelInvoke();
             rb.gravityScale = 0.0f;
-            rb.velocity = rb.velocity + new Vector2(0, dash_power);
+            velX = rb.velocity.x * 2;
+            rb.velocity = rb.velocity + new Vector2(velX, dash_power).normalized * dash_power;
             isGrounded = false;
             dashes--;
             Invoke("Stop_dash", stop);
@@ -72,7 +74,7 @@ public class Movement : MonoBehaviour
             dash_pause = true;
             rb.gravityScale = 0.0f;
             rb.velocity = new Vector2(0, 0);
-            rb.velocity = rb.velocity + new Vector2(dash_power, 0);
+            rb.velocity = rb.velocity + new Vector2(dash_power, 0) * 1.1f;
             isGrounded = false;
             dashes--;
             Invoke("Stop_dash", stop);
@@ -85,7 +87,7 @@ public class Movement : MonoBehaviour
             dash_pause = true;
             rb.gravityScale = 0.0f;
             rb.velocity = new Vector2(0, 0);
-            rb.velocity = rb.velocity + new Vector2(-dash_power, 0);
+            rb.velocity = rb.velocity + new Vector2(-dash_power, 0) * 1.1f;
             isGrounded = false;
             dashes--;
             Invoke("Stop_dash", stop);
