@@ -5,27 +5,68 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb2D;
-    public float playerMaxspeed = 2;
-    Vector2 userInput;
-    Vector2 velocity;
+    public float jumpForce = 6f;
+    bool isGrounded;
+    
 
+    public float maxSpeed = 7;
+    public float acceleration = 30;
+    public float deacceleration = 4;
 
-    // Start is called before the first frame update
+    float velocityX;
+
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
-
-        userInput.x = Input.GetAxisRaw("Horizontal");
-     
-        userInput.Normalize();
-        velocity = userInput * playerMaxspeed;
-        rb2D.velocity = velocity;
+        MoveLeftAndRight();
+        Jump();
+        GravityAdjust();
     }
+
+    private void MoveLeftAndRight()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        velocityX += x * acceleration * Time.deltaTime;
+        velocityX = Mathf.Clamp(velocityX, -maxSpeed, maxSpeed);
+
+        if (x == 0 || (x < 0 == velocityX > 0))
+        {
+            velocityX *= 1 - deacceleration * Time.deltaTime;
+        }
+
+        rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
+    }
+
+    private void GravityAdjust()
+    {
+        if (rb2D.velocity.y < 0)
+            rb2D.gravityScale = 5;
+        else
+            rb2D.gravityScale = 1;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+
+    }
+
+    private void Jump()
+    {
+        if (isGrounded && Input.GetButtonDown("Jump"))
+        {
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+            isGrounded = false;
+            
+        }
+      
+    }
+
 }
