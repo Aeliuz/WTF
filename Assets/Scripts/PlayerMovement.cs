@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D rb2D;
-    public float jumpForce = 6f;
-    bool isGrounded;
-    
 
-    public float maxSpeed = 7;
-    public float acceleration = 30;
+    Rigidbody2D rb2D;
+    public float maxSpeed = 5;
+    public float acceleration = 20;
     public float deacceleration = 4;
+    float jumpForce = 5;
+    bool isGrounded;
 
     float velocityX;
 
