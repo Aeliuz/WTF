@@ -29,6 +29,8 @@ public class jump : MonoBehaviour
 
     private void MoveLeftAndRight()
     {
+       
+
         float x = Input.GetAxisRaw("Horizontal");
         velocityX += x * acceleration * Time.deltaTime;
         velocityX = Mathf.Clamp(velocityX, -maxSpeed, maxSpeed);
