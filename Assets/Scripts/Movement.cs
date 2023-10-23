@@ -36,49 +36,57 @@ public class Movement : MonoBehaviour
             GravityAdjust();
         }
 
-        
+        if (isGrounded)
+        {
+            dashes = 1;
+            Debug.Log("grounded");
+        }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0 && !isGrounded)
         {
             dash_pause = true;
             CancelInvoke();
             rb.gravityScale = 0.0f;
             rb.velocity = rb.velocity + new Vector2(0, dash_power);
+            isGrounded = false;
             dashes--;
             Invoke("Stop_dash", stop);
             Invoke("Enable_gravity", coyote);
             Invoke("Disable_pause", coyote);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && dashes > 0)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && dashes > 0 && !isGrounded)
         {
             CancelInvoke();
             dash_pause = true;
             rb.gravityScale = 0.0f;
             rb.velocity = rb.velocity + new Vector2(0, -dash_power);
+            isGrounded = false;
             dashes--;
             Invoke("Stop_dash", stop);
             Invoke("Enable_gravity", coyote);
             Invoke("Disable_pause", coyote);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && dashes > 0)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && dashes > 0 && !isGrounded)
         {
             CancelInvoke();
             dash_pause = true;
             rb.gravityScale = 0.0f;
             rb.velocity = new Vector2(0, 0);
             rb.velocity = rb.velocity + new Vector2(dash_power, 0);
+            isGrounded = false;
             dashes--;
             Invoke("Stop_dash", stop);
             Invoke("Enable_gravity", coyote);
             Invoke("Disable_pause", coyote);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0 && !isGrounded)
         {
             CancelInvoke(); 
             dash_pause = true;
             rb.gravityScale = 0.0f;
             rb.velocity = new Vector2(0, 0);
             rb.velocity = rb.velocity + new Vector2(-dash_power, 0);
+            isGrounded = false;
             dashes--;
             Invoke("Stop_dash", stop);
             Invoke("Enable_gravity", coyote);
