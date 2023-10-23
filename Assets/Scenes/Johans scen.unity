@@ -461,8 +461,8 @@ MonoBehaviour:
   maxSpeed: 7
   acceleration: 30
   deacceleration: 4
-  coyote: 0.73
-  stop: 0.37
+  coyote: 0.6
+  stop: 0.2
   dash_power: 20
   dashes: 40
 --- !u!4 &505390691
@@ -506,7 +506,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &505390693
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

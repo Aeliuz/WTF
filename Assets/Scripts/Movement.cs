@@ -98,7 +98,7 @@ public class Movement : MonoBehaviour
 
     void Stop_dash()
     {
-        rb.velocity = 0.2f * rb.velocity;
+        rb.velocity = new Vector2(velocityX, 0);
     }
 
     private void MoveLeftAndRight()
