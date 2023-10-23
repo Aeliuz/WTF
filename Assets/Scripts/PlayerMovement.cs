@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb2D;
-    public float playerMaxspeed;
+    public float playerMaxspeed = 2;
     Vector2 userInput;
     Vector2 velocity;
 
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         userInput.x = Input.GetAxisRaw("Horizontal");
-        userInput.y = Input.GetAxisRaw("Vertical");
+     
         userInput.Normalize();
         velocity = userInput * playerMaxspeed;
         rb2D.velocity = velocity;
