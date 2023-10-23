@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class jump : MonoBehaviour
 {
+
     Rigidbody2D rb2D;
     public float jumpForce = 6f;
     bool isGrounded;
@@ -68,4 +69,5 @@ public class jump : MonoBehaviour
         }
         
     }
+
 }

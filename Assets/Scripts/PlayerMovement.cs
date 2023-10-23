@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private void MoveLeftAndRight()
     {
         float x = Input.GetAxisRaw("Horizontal");
-        velocityX += x * acceleration * Time.deltaTime;
+        velocityX += x * acceleration * Time.deltaTime; 
         velocityX = Mathf.Clamp(velocityX, -maxSpeed, maxSpeed);
 
         if (x == 0 || (x < 0 == velocityX > 0))
