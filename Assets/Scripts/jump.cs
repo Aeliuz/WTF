@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class jump : MonoBehaviour
 {
     Rigidbody2D rb2D;
     public float jumpForce = 6f;
     bool isGrounded;
+
+    public float maxSpeed = 7; 
+    public float acceleration = 30; 
+    public float deacceleration = 4; 
+
+    float velocityX;
 
     void Start()
     {
@@ -15,15 +22,27 @@ public class jump : MonoBehaviour
 
     private void Update()
     {
-        
+        MoveLeftAndRight();
         Jump();
         GravityAdjust();
-        
     }
+
+    private void MoveLeftAndRight()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        velocityX += x * acceleration * Time.deltaTime;
+        velocityX = Mathf.Clamp(velocityX, -maxSpeed, maxSpeed);
+
+        if (x == 0 || (x < 0 == velocityX > 0))
+        {
+            velocityX *= 1 - deacceleration * Time.deltaTime;
+        }
+
+        rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
+    }
+
     private void GravityAdjust()
     {
-        //If we are falling down increase gravity x4
-        //This creates a much better feeling, less floaty
         if (rb2D.velocity.y < 0)
             rb2D.gravityScale = 2;
         else
