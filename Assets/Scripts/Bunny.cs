@@ -5,11 +5,13 @@ using UnityEngine;
 public class Bunny : MonoBehaviour
 {
     GameObject bunny;
+    SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        bunny = GetComponent<GameObject>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = false;
     }
 
     // Update is called once per frame
@@ -22,9 +24,16 @@ public class Bunny : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            gameObject.SetActive(true);
-            Debug.Log("trigger");
+            spriteRenderer.enabled = true;
         }
+
+        Invoke("Disappear", 6f);
+    }
+
+
+    void Disappear()
+    {
+        spriteRenderer.enabled = false;
     }
 
 }
