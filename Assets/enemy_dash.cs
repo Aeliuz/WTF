@@ -24,6 +24,7 @@ public class enemy_dash : MonoBehaviour
         
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -43,5 +44,6 @@ public class enemy_dash : MonoBehaviour
        
        
     }
+
 
 }

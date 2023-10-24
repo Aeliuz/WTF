@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     public float jumpForce = 6f;
     bool isGrounded;
+    Vector2 checkpoint = new Vector2(5, 5);
 
     public float maxSpeed = 7;
     public float acceleration = 40;
@@ -23,6 +24,7 @@ public class Movement : MonoBehaviour
     float velocityX;
     float velX;
     bool dash_pause = false;
+    bool reverse_gravity = false;
     public bool isDashing = false;
 
     // Start is called before the first frame update
@@ -34,8 +36,8 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!dash_pause) 
-        { 
+        if (!dash_pause)
+        {
             MoveLeftAndRight();
             Jump();
             GravityAdjust();
@@ -48,14 +50,11 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0)
         {
-            isDashing = true;
-            dash_pause = true;
-            CancelInvoke();
-            rb.gravityScale = 0.0f;
+            Dash();
             velX = rb.velocity.x;
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
             {
-                rb.velocity = new Vector2 (velX, 0).normalized * dash_power;
+                rb.velocity = new Vector2(velX, 0).normalized * dash_power;
                 rb.velocity = rb.velocity + new Vector2(velX, dash_power).normalized * dash_power;
             }
             else
@@ -72,10 +71,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && dashes > 0 && !isGrounded)
         {
-            isDashing = true;
-            CancelInvoke();
-            dash_pause = true;
-            rb.gravityScale = 0.0f;
+            Dash();
             rb.velocity = rb.velocity + new Vector2(0, -dash_power);
             isGrounded = false;
             dashes--;
@@ -85,10 +81,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && dashes > 0 && !isGrounded)
         {
-            isDashing = true;
-            CancelInvoke();
-            dash_pause = true;
-            rb.gravityScale = 0.0f;
+            Dash();
             rb.velocity = new Vector2(0, 0);
             rb.velocity = rb.velocity + new Vector2(dash_power, 0) * 1.1f;
             isGrounded = false;
@@ -99,10 +92,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0 && !isGrounded)
         {
-            isDashing = true;
-            CancelInvoke(); 
-            dash_pause = true;
-            rb.gravityScale = 0.0f;
+            Dash();
             rb.velocity = new Vector2(0, 0);
             rb.velocity = rb.velocity + new Vector2(-dash_power, 0) * 1.1f;
             isGrounded = false;
@@ -113,9 +103,18 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void Dash()
+    {
+        isDashing = true;
+        dash_pause = true;
+        CancelInvoke();
+        rb.gravityScale = 0.0f;
+        //reverse_gravity = !reverse_gravity;
+    }
+
     void Enable_gravity()
     {
-        rb.gravityScale = 1.0f;
+        rb.gravityScale *= -1; ;
     }
 
     void Disable_pause()
@@ -145,10 +144,20 @@ public class Movement : MonoBehaviour
 
     private void GravityAdjust()
     {
-        if (rb.velocity.y < 0)
-            rb.gravityScale = 2;
+        if (!reverse_gravity)
+        {
+            if (rb.velocity.y < 0)
+                rb.gravityScale = 2;
+            else
+                rb.gravityScale = 1;
+        }
         else
-            rb.gravityScale = 1;
+        {
+            if (rb.velocity.y > 0)
+                rb.gravityScale = -2;
+            else
+                rb.gravityScale = -1;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -168,7 +177,7 @@ public class Movement : MonoBehaviour
         }
 
     }
-        private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("triggered");
         if (other.tag == "Enemy" && isDashing)
@@ -179,14 +188,12 @@ public class Movement : MonoBehaviour
         }
         else if (other.tag == "Enemy")
         {
-            transform.position = new Vector2(5, -7);
+            transform.position = checkpoint;
             rb.velocity = new Vector2(0, 0);
         }
-
-        timer += Time.deltaTime;
-        if (timer > delay)
+        if (other.tag == "Checkpoint")
         {
-            other.gameObject.SetActive(true);
+            checkpoint = transform.position;
         }
 
     }
