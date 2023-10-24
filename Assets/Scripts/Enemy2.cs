@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy2 : MonoBehaviour
 {
-    public float enemySpeed = 2f; // Adjust this value to control the movement speed.
+    public float enemySpeed = 2f; 
     private Rigidbody2D rb2d;
     private bool movingRight = true;
 
@@ -25,12 +25,13 @@ public class Enemy2 : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-        if (other.gameObject) 
+        if (other.gameObject)
         {
             movingRight = !movingRight;
         }
+        // Put another collider on the object and make it a trigger so the enemy do not bounce twize. 
     }
+
 }
