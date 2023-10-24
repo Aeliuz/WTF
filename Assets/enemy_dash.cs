@@ -8,6 +8,8 @@ public class enemy_dash : MonoBehaviour
     Rigidbody2D rb;
 
     Movement player;
+    public GameObject enemyToRespawm;
+    public Transform enemySpawnPoint;
 
 
     // Start is called before the first frame update
@@ -22,14 +24,24 @@ public class enemy_dash : MonoBehaviour
         
     }
 
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    Debug.Log("triggered");
-    //    if (other.tag == "Player" && player.isDashing)
-    //    {
-    //        Debug.Log("triggered by player, killing self");
-    //        player.dashes = 1;
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            Respawn();
+        }
+       
+    }
+    public void Respawn() //instantiera fienden
+    {
+        if (enemyToRespawm != null) 
+        {
+            Instantiate(enemyToRespawm, enemySpawnPoint.position, Quaternion.identity);
+
+        }
+       
+       
+    }
 
 }

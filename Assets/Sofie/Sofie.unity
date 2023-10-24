@@ -591,6 +591,8 @@ MonoBehaviour:
   stop: 0.1
   dash_power: 10
   dashes: 5
+  delay: 3
+  isDashing: 0
 --- !u!114 &1138328305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +730,7 @@ GameObject:
   - component: {fileID: 1142595014}
   - component: {fileID: 1142595013}
   m_Layer: 0
-  m_Name: CheckPoint
+  m_Name: CheckPointObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,6 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32e1e04f1b16d447a0f8a3b1e53b15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastCheckPointPos: {x: 0, y: 0}
 --- !u!61 &1142595014
 BoxCollider2D:
   m_ObjectHideFlags: 0
