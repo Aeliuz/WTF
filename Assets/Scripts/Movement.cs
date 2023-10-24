@@ -171,6 +171,11 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("triggered by player");
             dashes = 1;
+            Destroy(other.gameObject);
+        }
+        else if (other.tag == "Enemy")
+        {
+            Destroy(gameObject);
         }
     }
 }
