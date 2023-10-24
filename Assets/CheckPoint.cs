@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class CheckPoint : MonoBehaviour
@@ -11,7 +12,7 @@ public class CheckPoint : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("tag på checkpoint object ").GetComponent<CheckPointObject>();  //hämtar checkpoint game object
+        player = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<CheckPointObject>();  //hämtar checkpoint game object
         transform.position = player.lastCheckPointPos;
     }
     public void OnTriggerEnter2D(Collider2D other)
@@ -27,6 +28,8 @@ public class CheckPoint : MonoBehaviour
     public void Update()
     {
         //här ska scenen reloada till spelarens närmsta checkpoint efter att den dör 
+        SceneManager.LoadScene("Sofie");
+
     }
 
 

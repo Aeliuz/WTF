@@ -24,12 +24,7 @@ public class enemy_dash : MonoBehaviour
 
     //private void OnTriggerEnter2D(Collider2D other)
     //{
-    //    Debug.Log("triggered");
-    //    if (other.tag == "Player" && player.isDashing)
-    //    {
-    //        Debug.Log("triggered by player, killing self");
-    //        player.dashes = 1;
-    //    }
+
     //}
 
 }
