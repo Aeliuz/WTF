@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     float velocityX;
     float velX;
     bool dash_pause = false;
+    public bool isDashing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,16 +41,25 @@ public class Movement : MonoBehaviour
         if (isGrounded)
         {
             dashes = 1;
-            Debug.Log("grounded");
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0 && !isGrounded)
         {
+            isDashing = true;
             dash_pause = true;
             CancelInvoke();
             rb.gravityScale = 0.0f;
             velX = rb.velocity.x * 2;
-            rb.velocity = rb.velocity + new Vector2(velX, dash_power).normalized * dash_power;
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+            {
+                rb.velocity = rb.velocity + new Vector2(velX, dash_power).normalized * dash_power;
+            }
+            else
+            {
+                velocityX = 0;
+                rb.velocity = new Vector2(0, 0);
+                rb.velocity = rb.velocity + new Vector2(0, dash_power);
+            }
             isGrounded = false;
             dashes--;
             Invoke("Stop_dash", stop);
@@ -58,6 +68,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && dashes > 0 && !isGrounded)
         {
+            isDashing = true;
             CancelInvoke();
             dash_pause = true;
             rb.gravityScale = 0.0f;
@@ -70,6 +81,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && dashes > 0 && !isGrounded)
         {
+            isDashing = true;
             CancelInvoke();
             dash_pause = true;
             rb.gravityScale = 0.0f;
@@ -83,6 +95,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0 && !isGrounded)
         {
+            isDashing = true;
             CancelInvoke(); 
             dash_pause = true;
             rb.gravityScale = 0.0f;
@@ -108,6 +121,7 @@ public class Movement : MonoBehaviour
 
     void Stop_dash()
     {
+        isDashing = false;
         rb.velocity = new Vector2(velocityX, 0);
     }
 
@@ -150,5 +164,13 @@ public class Movement : MonoBehaviour
         }
 
     }
-
+        private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("triggered");
+        if (other.tag == "Enemy" && isDashing)
+        {
+            Debug.Log("triggered by player");
+            dashes = 1;
+        }
+    }
 }
