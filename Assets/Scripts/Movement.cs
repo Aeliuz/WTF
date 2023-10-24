@@ -17,9 +17,13 @@ public class Movement : MonoBehaviour
     public int dash_power = 10;
     public int dashes = 5;
 
+    public float delay = 3;
+    float timer;
+
     float velocityX;
     float velX;
     bool dash_pause = false;
+    public bool isDashing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,16 +44,26 @@ public class Movement : MonoBehaviour
         if (isGrounded)
         {
             dashes = 1;
-            Debug.Log("grounded");
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0 && !isGrounded)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0)
         {
+            isDashing = true;
             dash_pause = true;
             CancelInvoke();
             rb.gravityScale = 0.0f;
-            velX = rb.velocity.x * 2;
-            rb.velocity = rb.velocity + new Vector2(velX, dash_power).normalized * dash_power;
+            velX = rb.velocity.x;
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+            {
+                rb.velocity = new Vector2 (velX, 0).normalized * dash_power;
+                rb.velocity = rb.velocity + new Vector2(velX, dash_power).normalized * dash_power;
+            }
+            else
+            {
+                velocityX = 0;
+                rb.velocity = new Vector2(0, 0);
+                rb.velocity = rb.velocity + new Vector2(0, dash_power);
+            }
             isGrounded = false;
             dashes--;
             Invoke("Stop_dash", stop);
@@ -58,6 +72,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && dashes > 0 && !isGrounded)
         {
+            isDashing = true;
             CancelInvoke();
             dash_pause = true;
             rb.gravityScale = 0.0f;
@@ -70,6 +85,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && dashes > 0 && !isGrounded)
         {
+            isDashing = true;
             CancelInvoke();
             dash_pause = true;
             rb.gravityScale = 0.0f;
@@ -83,6 +99,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0 && !isGrounded)
         {
+            isDashing = true;
             CancelInvoke(); 
             dash_pause = true;
             rb.gravityScale = 0.0f;
@@ -108,6 +125,7 @@ public class Movement : MonoBehaviour
 
     void Stop_dash()
     {
+        isDashing = false;
         rb.velocity = new Vector2(velocityX, 0);
     }
 
@@ -143,10 +161,32 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+        }
+
+    }
+        private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("triggered");
+        if (other.tag == "Enemy" && isDashing)
+        {
+            Debug.Log("triggered by player");
+            dashes = 1;
+            other.gameObject.SetActive(false);
+        }
+        else if (other.tag == "Enemy")
+        {
+            transform.position = new Vector2(5, -7);
+            rb.velocity = new Vector2(0, 0);
+        }
+
+        timer += Time.deltaTime;
+        if (timer > delay)
+        {
+            other.gameObject.SetActive(true);
         }
 
     }
