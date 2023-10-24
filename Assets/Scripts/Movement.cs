@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
+    Animator animator;
     Rigidbody2D rb;
     public float jumpForce = 6f;
     bool isGrounded;
@@ -27,10 +27,12 @@ public class Movement : MonoBehaviour
     bool reverse_gravity = false;
     public bool isDashing = false;
 
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -50,6 +52,9 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0 && !isDashing)
         {
+            animator.SetBool("isDashingUp", true);
+
+
             Dash();
             velX = rb.velocity.x;
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
@@ -81,6 +86,9 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && dashes > 0 && !isGrounded && !isDashing)
         {
+            animator.SetBool("isDashingRightUp", true);
+
+
             Dash();
             rb.velocity = new Vector2(0, 0);
             rb.velocity = rb.velocity + new Vector2(dash_power, 0) * 1.1f;
@@ -92,6 +100,9 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0 && !isGrounded && !isDashing)
         {
+
+            animator.SetBool("isDashingLeftUp", true);
+
             Dash();
             rb.velocity = new Vector2(0, 0);
             rb.velocity = rb.velocity + new Vector2(-dash_power, 0) * 1.1f;
@@ -110,6 +121,7 @@ public class Movement : MonoBehaviour
         CancelInvoke();
         rb.gravityScale = 0.0f;
         //reverse_gravity = !reverse_gravity;
+        //animator.SetBool("isDashingUp", true);
     }
 
     void Enable_gravity()
@@ -126,6 +138,9 @@ public class Movement : MonoBehaviour
     {
         isDashing = false;
         rb.velocity = new Vector2(velocityX, 0);
+        animator.SetBool("isDashingUp", false);
+        animator.SetBool("isDashingLeftUp", false);
+        animator.SetBool("isDashingRightUp", false);
     }
 
     private void MoveLeftAndRight()
@@ -136,10 +151,25 @@ public class Movement : MonoBehaviour
 
         if (x == 0 || (x < 0 && velocityX > 0))
         {
-            velocityX *= 1 - deacceleration * Time.deltaTime;
+            //velocityX *= 1 - deacceleration * Time.deltaTime;
+            velocityX = 0;
         }
 
         rb.velocity = new Vector2(velocityX, rb.velocity.y);
+
+        if(velocityX > 0) 
+        {
+            animator.SetBool("isWalkingRight", true);
+            animator.SetBool("isWalkingLeft", false);
+            //animator.Play("walking-right");
+            Debug.Log("Den rör sig");
+        }
+        if (velocityX < 0)
+        {
+            animator.SetBool("isWalkingRight", false);
+            animator.SetBool("isWalkingLeft", true);
+            
+        }
     }
 
     private void GravityAdjust()

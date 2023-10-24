@@ -10,5 +10,9 @@ public class Menu : MonoBehaviour
     {
         UnityEditor.EditorApplication.isPlaying = false;
     }
+    public void Play()
+    {
+        SceneManager.LoadScene(1);
+    }
 
 }
