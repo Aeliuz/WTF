@@ -2536,7 +2536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871165500}
   serializedVersion: 2
-  m_LocalRotation: {x: -1.827203e-10, y: 2.854179e-10, z: 1.4176176e-18, w: 1}
+  m_LocalRotation: {x: -1.836343e-10, y: 2.868461e-10, z: 1.4247115e-18, w: 1}
   m_LocalPosition: {x: -12.08, y: -3.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5870,14 +5870,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866416804a6cb6c459eb60c3cea8ebdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 6
-  maxSpeed: 7
-  acceleration: 40
-  deacceleration: 3
-  coyote: 0.4
-  stop: 0.1
-  dash_power: 10
-  dashes: 5
+  jumpForce: 8
+  maxSpeed: 5
+  acceleration: 30
+  deacceleration: 4
+  coyote: 0.6
+  stop: 0.2
+  dash_power: 15
+  dashes: 1
+  delay: 3
   isDashing: 0
 --- !u!61 &2054085824
 BoxCollider2D:
