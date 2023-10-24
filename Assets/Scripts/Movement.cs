@@ -17,6 +17,9 @@ public class Movement : MonoBehaviour
     public int dash_power = 10;
     public int dashes = 5;
 
+    public float delay = 3;
+    float timer;
+
     float velocityX;
     float velX;
     bool dash_pause = false;
@@ -43,15 +46,16 @@ public class Movement : MonoBehaviour
             dashes = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0 && !isGrounded)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0)
         {
             isDashing = true;
             dash_pause = true;
             CancelInvoke();
             rb.gravityScale = 0.0f;
-            velX = rb.velocity.x * 2;
+            velX = rb.velocity.x;
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
             {
+                rb.velocity = new Vector2 (velX, 0).normalized * dash_power;
                 rb.velocity = rb.velocity + new Vector2(velX, dash_power).normalized * dash_power;
             }
             else
@@ -157,7 +161,7 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
@@ -171,11 +175,20 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("triggered by player");
             dashes = 1;
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
         else if (other.tag == "Enemy")
         {
-            Destroy(gameObject);
+            transform.position = new Vector2(5, -7);
+            rb.velocity = new Vector2(0, 0);
         }
+
+        timer += Time.deltaTime;
+        if (timer > delay)
+        {
+            other.gameObject.SetActive(true);
+        }
+
     }
+
 }
