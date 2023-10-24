@@ -48,7 +48,7 @@ public class Movement : MonoBehaviour
             dashes = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0 && !isDashing)
         {
             Dash();
             velX = rb.velocity.x;
@@ -69,7 +69,7 @@ public class Movement : MonoBehaviour
             Invoke("Enable_gravity", coyote);
             Invoke("Disable_pause", coyote);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && dashes > 0 && !isGrounded)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && dashes > 0 && !isGrounded && !isDashing)
         {
             Dash();
             rb.velocity = rb.velocity + new Vector2(0, -dash_power);
@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
             Invoke("Enable_gravity", coyote);
             Invoke("Disable_pause", coyote);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && dashes > 0 && !isGrounded)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && dashes > 0 && !isGrounded && !isDashing)
         {
             Dash();
             rb.velocity = new Vector2(0, 0);
@@ -90,7 +90,7 @@ public class Movement : MonoBehaviour
             Invoke("Enable_gravity", coyote);
             Invoke("Disable_pause", coyote);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0 && !isGrounded)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0 && !isGrounded && !isDashing)
         {
             Dash();
             rb.velocity = new Vector2(0, 0);
@@ -179,10 +179,8 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("triggered");
         if (other.tag == "Enemy" && isDashing)
         {
-            Debug.Log("triggered by player");
             dashes = 1;
             other.gameObject.SetActive(false);
         }

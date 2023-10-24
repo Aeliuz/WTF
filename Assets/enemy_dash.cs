@@ -8,20 +8,19 @@ public class enemy_dash : MonoBehaviour
     Rigidbody2D rb;
 
     Movement player;
-    public GameObject enemyToRespawm;
-    public Transform enemySpawnPoint;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -30,19 +29,13 @@ public class enemy_dash : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Respawn();
+            Invoke("Respawn", 3f);
         }
-       
+
     }
     public void Respawn() //instantiera fienden
     {
-        if (enemyToRespawm != null) 
-        {
-            Instantiate(enemyToRespawm, enemySpawnPoint.position, Quaternion.identity);
-
-        }
-       
-       
+        gameObject.SetActive(true);
     }
 
 
