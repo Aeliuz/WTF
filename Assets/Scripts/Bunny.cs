@@ -6,12 +6,16 @@ public class Bunny : MonoBehaviour
 {
     GameObject bunny;
     SpriteRenderer spriteRenderer;
+    AudioSource audioSource;
+    public AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
+        audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class Bunny : MonoBehaviour
         if(other.tag == "Player")
         {
             spriteRenderer.enabled = true;
+            audioSource.Play();
         }
 
         Invoke("Disappear", 6f);
