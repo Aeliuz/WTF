@@ -33,7 +33,7 @@ public class enemy_dash : MonoBehaviour
         }
 
     }
-    public void Respawn() //instantiera fienden
+    public void Respawn() 
     {
         gameObject.SetActive(true);
     }
