@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
     public float delay = 3;
     float timer;
 
-    float velocityX;
+    public float velocityX;
     float velX;
     float velY;
     float dashX;
@@ -32,6 +32,7 @@ public class Movement : MonoBehaviour
     public bool isDashing = false;
     bool jumping = false;
     public bool overworld = true;
+    bool ran_right = true;
 
 
     // Start is called before the first frame update
@@ -39,6 +40,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -71,29 +73,29 @@ public class Movement : MonoBehaviour
             Dash();
         }
 
-        if (isDashing)
-        {
-            if (rb.velocity.x > 0 && rb.velocity.y > 0)
-                animator.SetBool("isDashingRightUp", true);
-            else if (rb.velocity.x > 0 && rb.velocity.y < 0)
-                animator.SetBool("isDashingRightDown", true);
-            else if (rb.velocity.x > 0 && rb.velocity.y == 0)
-                animator.SetBool("isDashingRight", true);
-            else if (rb.velocity.x == 0 && rb.velocity.y > 0)
-                animator.SetBool("isDashingUp", true);
-            else if (rb.velocity.x == 0 && rb.velocity.y < 0)
-                animator.SetBool("isDashingDown", true);
-            else if (rb.velocity.x < 0 && rb.velocity.y == 0)
-                animator.SetBool("isDashingLeft", true);
-            else if (rb.velocity.x < 0 && rb.velocity.y > 0)
-                animator.SetBool("isDashingLeftUp", true);
-            else if (rb.velocity.x < 0 && rb.velocity.y < 0)
-                animator.SetBool("isDashingLeftDown", true);
-        }
-        else if (rb.velocity.x < 0)
-            animator.SetBool("isJumping", true);
-        else if (rb.velocity.x < 0)
-            animator.SetBool("isFalling", true);
+        //if (isDashing)
+        //{
+        //    if (rb.velocity.x > 0 && rb.velocity.y > 0)
+        //        animator.SetBool("isDashingRightUp", true);
+        //    else if (rb.velocity.x > 0 && rb.velocity.y < 0)
+        //        animator.SetBool("isDashingRightDown", true);
+        //    else if (rb.velocity.x > 0 && rb.velocity.y == 0)
+        //        animator.SetBool("isDashingRight", true);
+        //    else if (rb.velocity.x == 0 && rb.velocity.y > 0)
+        //        animator.SetBool("isDashingUp", true);
+        //    else if (rb.velocity.x == 0 && rb.velocity.y < 0)
+        //        animator.SetBool("isDashingDown", true);
+        //    else if (rb.velocity.x < 0 && rb.velocity.y == 0)
+        //        animator.SetBool("isDashingLeft", true);
+        //    else if (rb.velocity.x < 0 && rb.velocity.y > 0)
+        //        animator.SetBool("isDashingLeftUp", true);
+        //    else if (rb.velocity.x < 0 && rb.velocity.y < 0)
+        //        animator.SetBool("isDashingLeftDown", true);
+        //}
+        //else if (rb.velocity.x < 0)
+        //    animator.SetBool("isJumping", true);
+        //else if (rb.velocity.x < 0)
+        //    animator.SetBool("isFalling", true);
 
         if (isGrounded)
         {
@@ -231,17 +233,23 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("isWalkingRight", true);
             animator.SetBool("isWalkingLeft", false);
-            //animator.Play("walking-right");
+            animator.SetBool("IdleRight", true);
+            animator.SetBool("IdleLeft", false);
+            animator.SetBool("Idle", false);
         }
-         else if (velocityX < 0 && isGrounded)
+        if (velocityX < 0 && isGrounded)
         {
             animator.SetBool("isWalkingRight", false);
             animator.SetBool("isWalkingLeft", true);
+            animator.SetBool("IdleLeft", true);
+            animator.SetBool("IdleRight", false);
+            animator.SetBool("Idle", false);
         }
-        else
+        if (isGrounded && velocityX == 0)
         {
             animator.SetBool("isWalkingRight", false);
             animator.SetBool("isWalkingLeft", false);
+            animator.SetBool("Idle", true);
         }
     }
 
