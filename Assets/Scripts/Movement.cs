@@ -53,6 +53,11 @@ public class Movement : MonoBehaviour
             GravityAdjust();
         }
 
+        if (Input.GetKeyDown(KeyCode.Q)) 
+        {
+            transform.position = checkpoint;
+            rb.velocity = new Vector2(0, 0);
+        }
 
         if (Input.GetKey(KeyCode.W))
             dashY = dash_power;
@@ -319,7 +324,7 @@ public class Movement : MonoBehaviour
                 reverse_gravity = !reverse_gravity;
             }
         }
-        else if (other.tag == "Enemy")
+        else if (other.tag == "Enemy" && !overworld)
         {
             transform.position = checkpoint;
             rb.velocity = new Vector2(0, 0);
