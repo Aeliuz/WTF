@@ -94,11 +94,6 @@ public class Movement : MonoBehaviour
             animator.SetBool("isJumping", true);
         else if (rb.velocity.x < 0)
             animator.SetBool("isFalling", true);
-        else
-            animator.SetBool("Idle", true);
-
-
-
 
         if (isGrounded)
         {
@@ -232,17 +227,21 @@ public class Movement : MonoBehaviour
 
         rb.velocity = new Vector2(velocityX, rb.velocity.y);
 
-        if (velocityX > 0)
+        if (velocityX > 0 && isGrounded)
         {
             animator.SetBool("isWalkingRight", true);
             animator.SetBool("isWalkingLeft", false);
             //animator.Play("walking-right");
         }
-        if (velocityX < 0)
+         else if (velocityX < 0 && isGrounded)
         {
             animator.SetBool("isWalkingRight", false);
             animator.SetBool("isWalkingLeft", true);
-
+        }
+        else
+        {
+            animator.SetBool("isWalkingRight", false);
+            animator.SetBool("isWalkingLeft", false);
         }
     }
 
