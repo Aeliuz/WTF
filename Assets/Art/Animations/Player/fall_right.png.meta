@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 14fc6b024e2cee5459d150a565557f56
+guid: fccdf95c5517c864bbd565788f64dfb4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump_left_0
+      name: fall_right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc7e6fa4488b8db45a250b52cb95c323
-      internalID: 967634266
+      spriteID: 22d23a1ad7deed6478fbcb3f41f17f8b
+      internalID: 2110600568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_left_1
+      name: fall_right_1
       rect:
         serializedVersion: 2
         x: 30
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4bbc2157ff582c4e916f23da13f8f75
-      internalID: 620390631
+      spriteID: 05dae287e46b7aa4a82be460c3179e98
+      internalID: 1703704288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_left_2
+      name: fall_right_2
       rect:
         serializedVersion: 2
         x: 0
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 796a6b16a0956fa49bb90dc0d7a18bc1
-      internalID: 394862329
+      spriteID: 87de418c4cf7a0e48b761ea01d3ade36
+      internalID: 2072416341
       vertices: []
       indices: 
       edges: []
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      jump_left_0: 967634266
-      jump_left_1: 620390631
-      jump_left_2: 394862329
+      fall_right_0: 2110600568
+      fall_right_1: 1703704288
+      fall_right_2: 2072416341
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

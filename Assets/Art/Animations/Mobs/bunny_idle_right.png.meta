@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 14fc6b024e2cee5459d150a565557f56
+guid: 80184d41db9a34645bf5683fba018ab9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump_left_0
+      name: bunny_idle_right_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 30
-        width: 30
-        height: 30
+        y: 18
+        width: 18
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc7e6fa4488b8db45a250b52cb95c323
-      internalID: 967634266
+      spriteID: 1834bc6c22ebc66499716c07de40d536
+      internalID: -807746593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_left_1
+      name: bunny_idle_right_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 30
-        width: 30
-        height: 30
+        x: 18
+        y: 18
+        width: 18
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4bbc2157ff582c4e916f23da13f8f75
-      internalID: 620390631
+      spriteID: b4c8199137e05334582b3723398828bd
+      internalID: 1541765606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_left_2
+      name: bunny_idle_right_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 30
-        height: 30
+        width: 18
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 796a6b16a0956fa49bb90dc0d7a18bc1
-      internalID: 394862329
+      spriteID: 08e0073227e44dc4dbb9cc87030a9b50
+      internalID: 492368187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunny_idle_right_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b869a6b1a1a88429d6255808f38bfa
+      internalID: 617582435
       vertices: []
       indices: 
       edges: []
@@ -196,9 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      jump_left_0: 967634266
-      jump_left_1: 620390631
-      jump_left_2: 394862329
+      bunny_idle_right_0: -807746593
+      bunny_idle_right_1: 1541765606
+      bunny_idle_right_2: 492368187
+      bunny_idle_right_3: 617582435
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

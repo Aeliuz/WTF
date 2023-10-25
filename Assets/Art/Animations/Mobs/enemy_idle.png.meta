@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 14fc6b024e2cee5459d150a565557f56
+guid: 13abe732711647242ac2fe62b4bd25c1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump_left_0
+      name: enemy_idle_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 30
-        width: 30
-        height: 30
+        y: 24
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc7e6fa4488b8db45a250b52cb95c323
-      internalID: 967634266
+      spriteID: 36a769ba6c2e9484abcb2e73066a58e5
+      internalID: 1153376235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_left_1
+      name: enemy_idle_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 30
-        width: 30
-        height: 30
+        x: 24
+        y: 24
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4bbc2157ff582c4e916f23da13f8f75
-      internalID: 620390631
+      spriteID: 06e6b0ad51e910d4880894a95b72ade3
+      internalID: -433264368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_left_2
+      name: enemy_idle_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 30
-        height: 30
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 796a6b16a0956fa49bb90dc0d7a18bc1
-      internalID: 394862329
+      spriteID: 981469e03126f6b459575a8b2d5d299c
+      internalID: 334890029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_idle_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a6a8a4016c800547b09bdc4db23abdc
+      internalID: 1635134730
       vertices: []
       indices: 
       edges: []
@@ -196,9 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      jump_left_0: 967634266
-      jump_left_1: 620390631
-      jump_left_2: 394862329
+      enemy_idle_0: 1153376235
+      enemy_idle_1: -433264368
+      enemy_idle_2: 334890029
+      enemy_idle_3: 1635134730
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
