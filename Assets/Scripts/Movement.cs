@@ -241,6 +241,8 @@ public class Movement : MonoBehaviour
             animator.SetBool("IdleRight", true);
             animator.SetBool("IdleLeft", false);
             animator.SetBool("Idle", false);
+            animator.SetBool("isJumpingRight", false);
+            animator.SetBool("isJumpingLeft", false);
         }
         if (velocityX < 0 && isGrounded)
         {
@@ -249,12 +251,25 @@ public class Movement : MonoBehaviour
             animator.SetBool("IdleLeft", true);
             animator.SetBool("IdleRight", false);
             animator.SetBool("Idle", false);
+            animator.SetBool("isJumpingRight", false);
+            animator.SetBool("isJumpingLeft", false);
+
         }
         if (isGrounded && velocityX == 0)
         {
             animator.SetBool("isWalkingRight", false);
             animator.SetBool("isWalkingLeft", false);
             animator.SetBool("Idle", true);
+            animator.SetBool("isJumpingRight", false);
+            animator.SetBool("isJumpingLeft", false);
+        }
+        if(velocityX > 0 && jumping)
+        {
+            animator.SetBool("isJumpingRight", true);
+        }
+        if (velocityX < 0 && jumping)
+        {
+            animator.SetBool("isJumpingLeft", true);
         }
     }
 
