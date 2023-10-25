@@ -48,7 +48,16 @@ TagManager:
   - name: mountains
     uniqueID: 961732591
     locked: 0
-  - name: clouds
+  - name: clouds far
+    uniqueID: 1480963093
+    locked: 0
+  - name: clouds middle
+    uniqueID: 1075144143
+    locked: 0
+  - name: clouds near
+    uniqueID: 3955055887
+    locked: 0
+  - name: trees far
     uniqueID: 3588280305
     locked: 0
   - name: trees
