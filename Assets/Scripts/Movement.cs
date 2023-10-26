@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public GameObject fallCheck;
     Animator animator;
     Rigidbody2D rb;
     public float jumpForce = 6f;
@@ -33,10 +34,9 @@ public class Movement : MonoBehaviour
     public bool isDashing = false;
     bool jumping = false;
     public bool overworld = true;
-    bool ran_right = true;
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,7 +44,6 @@ public class Movement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!dash_pause)
@@ -79,97 +78,11 @@ public class Movement : MonoBehaviour
             Dash();
         }
 
-        //if (isDashing)
-        //{
-        //    if (rb.velocity.x > 0 && rb.velocity.y > 0)
-        //        animator.SetBool("isDashingRightUp", true);
-        //    else if (rb.velocity.x > 0 && rb.velocity.y < 0)
-        //        animator.SetBool("isDashingRightDown", true);
-        //    else if (rb.velocity.x > 0 && rb.velocity.y == 0)
-        //        animator.SetBool("isDashingRight", true);
-        //    else if (rb.velocity.x == 0 && rb.velocity.y > 0)
-        //        animator.SetBool("isDashingUp", true);
-        //    else if (rb.velocity.x == 0 && rb.velocity.y < 0)
-        //        animator.SetBool("isDashingDown", true);
-        //    else if (rb.velocity.x < 0 && rb.velocity.y == 0)
-        //        animator.SetBool("isDashingLeft", true);
-        //    else if (rb.velocity.x < 0 && rb.velocity.y > 0)
-        //        animator.SetBool("isDashingLeftUp", true);
-        //    else if (rb.velocity.x < 0 && rb.velocity.y < 0)
-        //        animator.SetBool("isDashingLeftDown", true);
-        //}
-        //else if (rb.velocity.x < 0)
-        //    animator.SetBool("isJumping", true);
-        //else if (rb.velocity.x < 0)
-        //    animator.SetBool("isFalling", true);
-
         if (isGrounded)
         {
             dashes = 1;
         }
 
-        //if (Input.GetKeyDown(KeyCode.UpArrow) && dashes > 0 && !isDashing)
-        //{
-        //    animator.SetBool("isDashingUp", true);
-
-
-        //    Dash();
-        //    velX = rb.velocity.x;
-        //    if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
-        //    {
-        //        rb.velocity = new Vector2(velX, 0).normalized * dash_power;
-        //        rb.velocity = rb.velocity + new Vector2(velX, dash_power).normalized * dash_power;
-        //    }
-        //    else
-        //    {
-        //        velocityX = 0;
-        //        rb.velocity = new Vector2(0, 0);
-        //        rb.velocity = rb.velocity + new Vector2(0, dash_power);
-        //    }
-        //    isGrounded = false;
-        //    dashes--;
-        //    Invoke("Stop_dash", stop);
-        //    Invoke("Enable_gravity", coyote);
-        //    Invoke("Disable_pause", coyote);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.DownArrow) && dashes > 0 && !isGrounded && !isDashing)
-        //{
-        //    Dash();
-        //    rb.velocity = rb.velocity + new Vector2(0, -dash_power);
-        //    isGrounded = false;
-        //    dashes--;
-        //    Invoke("Stop_dash", stop);
-        //    Invoke("Enable_gravity", coyote);
-        //    Invoke("Disable_pause", coyote);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.RightArrow) && dashes > 0 && !isGrounded && !isDashing)
-        //{
-        //    animator.SetBool("isDashingRightUp", true);
-
-
-        //    Dash();
-        //    rb.velocity = new Vector2(0, 0);
-        //    rb.velocity = rb.velocity + new Vector2(dash_power, 0) * 1.1f;
-        //    isGrounded = false;
-        //    dashes--;
-        //    Invoke("Stop_dash", stop);
-        //    Invoke("Enable_gravity", coyote);
-        //    Invoke("Disable_pause", coyote);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.LeftArrow) && dashes > 0 && !isGrounded && !isDashing)
-        //{
-
-        //    animator.SetBool("isDashingLeftUp", true);
-
-        //    Dash();
-        //    rb.velocity = new Vector2(0, 0);
-        //    rb.velocity = rb.velocity + new Vector2(-dash_power, 0) * 1.1f;
-        //    isGrounded = false;
-        //    dashes--;
-        //    Invoke("Stop_dash", stop);
-        //    Invoke("Enable_gravity", coyote);
-        //    Invoke("Disable_pause", coyote);
-        //}
     }
 
     private void Dash()
@@ -192,12 +105,6 @@ public class Movement : MonoBehaviour
             dir += Vector2.down;
         }
 
-
-
-      //  if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-      //  {
-      //    
-      //  }
         if(dir != Vector2.zero)
         {
             DoDash();
@@ -410,6 +317,11 @@ public class Movement : MonoBehaviour
         if (other.tag == "Checkpoint")
         {
             checkpoint = transform.position;
+        }
+
+        if (other.tag == "FallCheck")
+        {
+            isGrounded = false;
         }
 
     }
