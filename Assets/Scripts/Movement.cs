@@ -295,7 +295,7 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("isWalkingRight", true);
             animator.SetBool("isWalkingLeft", false);
-            animator.SetBool("IdleRight", true);
+            animator.SetBool("IdleRight", false);
             animator.SetBool("IdleLeft", false);
             animator.SetBool("Idle", false);
             animator.SetBool("isJumpingRight", false);
@@ -305,7 +305,7 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("isWalkingRight", false);
             animator.SetBool("isWalkingLeft", true);
-            animator.SetBool("IdleLeft", true);
+            animator.SetBool("IdleLeft", false);
             animator.SetBool("IdleRight", false);
             animator.SetBool("Idle", false);
             animator.SetBool("isJumpingRight", false);
@@ -316,7 +316,7 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("isWalkingRight", false);
             animator.SetBool("isWalkingLeft", false);
-            animator.SetBool("Idle", true);
+            animator.SetBool("IdleRight", true);
             animator.SetBool("isJumpingRight", false);
             animator.SetBool("isJumpingLeft", false);
         }
