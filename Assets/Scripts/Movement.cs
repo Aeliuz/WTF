@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -173,31 +174,86 @@ public class Movement : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        Vector2 dir = Vector2.zero;
+        if(Input.GetKey(KeyCode.A))
         {
-            isDashing = true;
-            dash_pause = true;
-            CancelInvoke();
-            rb.gravityScale = 0.0f;
-            velY = rb.velocity.y;
-            rb.velocity = new Vector2(velX, 0).normalized * dash_power;
-            rb.velocity = new Vector2(dashX, dashY).normalized * dash_power;
-            isGrounded = false;
-            dashes--;
-            Invoke("Stop_dash", stop);
+            dir += Vector2.left;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            dir += Vector2.right;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            dir += Vector2.up;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            dir += Vector2.down;
+        }
 
-            if (rb.velocity.x == 0)
-            {
-                Invoke("Enable_gravity", short_coyote);
-                Invoke("Disable_pause", short_coyote);
-                Debug.Log("short coyote");
-            }
-            else
-            {
-                Invoke("Enable_gravity", coyote);
-                Invoke("Disable_pause", coyote);
-                Debug.Log("Long coyote");
-            }
+
+
+      //  if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+      //  {
+      //    
+      //  }
+        if(dir != Vector2.zero)
+        {
+            DoDash();
+            DashAnim(dir);
+        }
+    }
+
+    private void DashAnim(Vector2 v)
+    {
+        animator.SetBool("isDashingUp", false);
+        animator.SetBool("isDashingLeft", false);
+        animator.SetBool("isDashingRight", false);
+        animator.SetBool("isDashingDown", false);
+        if (v.y == 1)
+        {
+             animator.SetBool("isDashingUp", true);
+        }
+        if(v.y == -1)
+        {
+            animator.SetBool("isDashingDown", true);
+        }
+        if (v.x == -1)
+        {
+            animator.SetBool("isDashingLeft", true);
+        }
+        if (v.x == 1)
+        {
+            animator.SetBool("isDashingRight", true);
+        }
+
+    }
+
+    private void DoDash()
+    {
+        isDashing = true;
+        dash_pause = true;
+        CancelInvoke();
+        rb.gravityScale = 0.0f;
+        velY = rb.velocity.y;
+        rb.velocity = new Vector2(velX, 0).normalized * dash_power;
+        rb.velocity = new Vector2(dashX, dashY).normalized * dash_power;
+        isGrounded = false;
+        dashes--;
+        Invoke("Stop_dash", stop);
+
+        if (rb.velocity.x == 0)
+        {
+            Invoke("Enable_gravity", short_coyote);
+            Invoke("Disable_pause", short_coyote);
+            Debug.Log("short coyote");
+        }
+        else
+        {
+            Invoke("Enable_gravity", coyote);
+            Invoke("Disable_pause", coyote);
+            Debug.Log("Long coyote");
         }
     }
 
@@ -216,8 +272,9 @@ public class Movement : MonoBehaviour
         isDashing = false;
         rb.velocity = new Vector2(velocityX, 0);
         animator.SetBool("isDashingUp", false);
-        animator.SetBool("isDashingLeftUp", false);
-        animator.SetBool("isDashingRightUp", false);
+        animator.SetBool("isDashingLeft", false);
+        animator.SetBool("isDashingRight", false);
+        animator.SetBool("isDashingDown", false);
     }
 
     private void MoveLeftAndRight()
@@ -271,6 +328,8 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("isJumpingLeft", true);
         }
+
+
     }
 
     private void GravityAdjust()
