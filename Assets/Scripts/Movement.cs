@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
     bool reverse_gravity = false;
     public bool isDashing = false;
     bool jumping = false;
-    public bool overworld = true;
+    public static bool overworld = true;
 
 
 
