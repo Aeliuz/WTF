@@ -41,6 +41,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        overworld = false;
 
     }
 
@@ -53,7 +54,7 @@ public class Movement : MonoBehaviour
             GravityAdjust();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q)) 
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             transform.position = checkpoint;
             rb.velocity = new Vector2(0, 0);
@@ -88,7 +89,7 @@ public class Movement : MonoBehaviour
     private void Dash()
     {
         Vector2 dir = Vector2.zero;
-        if(Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             dir += Vector2.left;
         }
@@ -105,7 +106,7 @@ public class Movement : MonoBehaviour
             dir += Vector2.down;
         }
 
-        if(dir != Vector2.zero)
+        if (dir != Vector2.zero)
         {
             DoDash();
             DashAnim(dir);
@@ -120,9 +121,9 @@ public class Movement : MonoBehaviour
         animator.SetBool("isDashingDown", false);
         if (v.y == 1)
         {
-             animator.SetBool("isDashingUp", true);
+            animator.SetBool("isDashingUp", true);
         }
-        if(v.y == -1)
+        if (v.y == -1)
         {
             animator.SetBool("isDashingDown", true);
         }
@@ -227,7 +228,7 @@ public class Movement : MonoBehaviour
             animator.SetBool("isJumpingRight", false);
             animator.SetBool("isJumpingLeft", false);
         }
-        if(velocityX > 0 && jumping)
+        if (velocityX > 0 && jumping)
         {
             animator.SetBool("isJumpingRight", true);
         }
@@ -235,7 +236,7 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("isJumpingLeft", true);
         }
-        if(velocityX == 0 && jumping)
+        if (velocityX == 0 && jumping)
         {
             animator.SetBool("isJumpingRight", true);
         }
@@ -245,30 +246,13 @@ public class Movement : MonoBehaviour
 
     private void GravityAdjust()
     {
-        if (!overworld)
-        {
-            if (!reverse_gravity)
-            {
-                if (rb.velocity.y < 0)
-                    rb.gravityScale = 2;
-                else
-                    rb.gravityScale = 1;
-            }
-            else
-            {
-                if (rb.velocity.y > 0)
-                    rb.gravityScale = -2;
-                else
-                    rb.gravityScale = -1;
-            }
-        }
+
+
+        if (rb.velocity.y < 0)
+            rb.gravityScale = 2;
         else
-        {
-            if (rb.velocity.y < 0)
-                rb.gravityScale = 2;
-            else
-                rb.gravityScale = 1;
-        }
+            rb.gravityScale = 1;
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -304,10 +288,10 @@ public class Movement : MonoBehaviour
         {
             dashes = 1;
             other.gameObject.SetActive(false);
-            if (!overworld)
-            {
-                reverse_gravity = !reverse_gravity;
-            }
+            //if (!overworld)
+            //{
+            //    reverse_gravity = !reverse_gravity;
+            //}
         }
         else if (other.tag == "Enemy" && !overworld)
         {
