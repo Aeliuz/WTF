@@ -154,13 +154,13 @@ public class Movement : MonoBehaviour
         {
             Invoke("Enable_gravity", short_coyote);
             Invoke("Disable_pause", short_coyote);
-            Debug.Log("short coyote");
+            //Debug.Log("short coyote");
         }
         else
         {
             Invoke("Enable_gravity", coyote);
             Invoke("Disable_pause", coyote);
-            Debug.Log("Long coyote");
+            //Debug.Log("Long coyote");
         }
     }
 
