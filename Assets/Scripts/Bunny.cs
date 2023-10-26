@@ -34,7 +34,7 @@ public class Bunny : MonoBehaviour
             audioSource.Play();
         }
 
-        Invoke("Disappear", 6f);
+        Invoke("Disappear", 2f);
     }
 
 
