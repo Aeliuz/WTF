@@ -21,7 +21,7 @@ public class DialogPopUp : MonoBehaviour
             spriteRenderer.enabled = true;
         }
 
-        Invoke("Disappear", 6f);
+        Invoke("Disappear", 6.5f);
     }
 
     void Disappear()

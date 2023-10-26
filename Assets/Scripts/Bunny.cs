@@ -30,7 +30,7 @@ public class Bunny : MonoBehaviour
         if(other.tag == "Player")
         {
             spriteRenderer.enabled = true;
-            spriteRenderer.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
             audioSource.Play();
         }
 
