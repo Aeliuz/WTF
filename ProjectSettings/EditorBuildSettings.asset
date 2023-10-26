@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main.unity
     guid: daa9e7f8ff9067d49b8ec137fc557f43
+  - enabled: 1
+    path: Assets/Scenes/Underworld test.unity
+    guid: a8195df859f0f7f4a83f9098f3e42aae
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 85069888784da2245a12b478e0915628
   m_configObjects: {}
