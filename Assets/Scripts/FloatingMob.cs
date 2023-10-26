@@ -6,22 +6,22 @@ using UnityEngine;
 public class FloatingMob : MonoBehaviour
 {
     private Vector3 _startPosition;
-    float sinkingspeed = 1;
 
-    
+
+
     float NewYPos;
     bool sinking = false;
 
     void Start()
     {
         _startPosition = transform.position;
-        
+
     }
 
     void Update()
     {
 
-        _startPosition.y = NewYPos;
+
         if (!sinking)
             transform.position = _startPosition + new Vector3(0f, MathF.Sin(Time.time), 0.0f);
         else if (sinking)
