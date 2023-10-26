@@ -328,6 +328,10 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("isJumpingLeft", true);
         }
+        if(velocityX == 0 && jumping)
+        {
+            animator.SetBool("isJumpingRight", true);
+        }
 
 
     }
