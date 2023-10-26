@@ -25,7 +25,7 @@ public class FloatingMob : MonoBehaviour
         if (!sinking)
             transform.position = _startPosition + new Vector3(0f, MathF.Sin(Time.time), 0.0f);
         else if (sinking)
-            transform.position = transform.position + new Vector3(0, -1f, 0) * Time.deltaTime;
+            transform.position = transform.position + new Vector3(0, -3f, 0) * Time.deltaTime;
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
