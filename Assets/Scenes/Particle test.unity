@@ -1424,6 +1424,30 @@ PrefabInstance:
       propertyPath: InitialModule.startSpeed.minScalar
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4379256889128400494, guid: 2ab26c9b72242274e97134a4363fe569, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime0
+      value: 16384
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379256889128400494, guid: 2ab26c9b72242274e97134a4363fe569, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime1
+      value: 33153
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379256889128400494, guid: 2ab26c9b72242274e97134a4363fe569, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime2
+      value: 50308
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379256889128400494, guid: 2ab26c9b72242274e97134a4363fe569, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379256889128400494, guid: 2ab26c9b72242274e97134a4363fe569, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379256889128400494, guid: 2ab26c9b72242274e97134a4363fe569, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4498493962418867045, guid: 2ab26c9b72242274e97134a4363fe569, type: 3}
       propertyPath: m_Name
       value: Particle System dark
