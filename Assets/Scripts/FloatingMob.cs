@@ -6,8 +6,8 @@ using UnityEngine;
 public class FloatingMob : MonoBehaviour
 {
     private Vector3 _startPosition;
-   
-    float playerSinking;
+    float sinkingspeed = 1;
+    
     float NewYPos;
 
     void Start()
@@ -20,11 +20,8 @@ public class FloatingMob : MonoBehaviour
     {
 
         _startPosition.y = NewYPos;
-       //transform.position = new Vector3(_startPosition.x, sinkPosition, _startPosition.y);
-      
-       // sinkPosition -= _startPosition.y * sinkDepth * Time.deltaTime; 
-           
 
+        transform.position = _startPosition + new Vector3(0f, MathF.Sin(Time.time), 0.0f);
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -32,13 +29,9 @@ public class FloatingMob : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
 
-            NewYPos = _startPosition.y - 0.5f;
+            NewYPos = _startPosition.y - 0.09f * sinkingspeed;
             transform.position = new Vector3(_startPosition.x, NewYPos, _startPosition.z);
 
-        }
-        else
-        {
-            transform.position = _startPosition + new Vector3(0f, MathF.Sin(Time.time), 0.0f);
         }
 
 
