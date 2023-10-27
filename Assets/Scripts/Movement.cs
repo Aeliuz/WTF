@@ -12,6 +12,11 @@ public class Movement : MonoBehaviour
     bool isGrounded;
     Vector2 checkpoint = new Vector2(5, 5);
 
+    AudioSource audioSource;
+
+    public AudioClip jump;
+    public AudioClip dash;
+
     public float maxSpeed = 7;
     public float acceleration = 40;
     public float deacceleration = 3;
@@ -30,7 +35,7 @@ public class Movement : MonoBehaviour
     float dashX;
     float dashY;
     public bool dash_pause = false;
-    bool reverse_gravity = false;
+
     public bool isDashing = false;
     bool jumping = false;
     public static bool overworld = true;
@@ -140,6 +145,7 @@ public class Movement : MonoBehaviour
 
     private void DoDash()
     {
+        AudioSource.PlayClipAtPoint(dash, transform.position, 10);
         isDashing = true;
         dash_pause = true;
         CancelInvoke();
@@ -267,10 +273,8 @@ public class Movement : MonoBehaviour
     {
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            if (!reverse_gravity)
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            else
-                rb.velocity = new Vector2(rb.velocity.x, -jumpForce);
+            AudioSource.PlayClipAtPoint(jump, transform.position, 10);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
             jumping = true;
             Invoke("Jump_stop", 0.2f);
