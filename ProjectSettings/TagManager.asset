@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Checkpoint
   - FallCheck
+  - FallReset
   layers:
   - Default
   - TransparentFX

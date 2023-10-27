@@ -303,11 +303,15 @@ public class Movement : MonoBehaviour
             checkpoint = transform.position;
         }
 
-        if (other.tag == "FallCheck")
+        else if (other.tag == "FallCheck")
         {
             isGrounded = false;
         }
-
+        else if (other.tag == "FallReset")
+        {
+            transform.position = checkpoint;
+            rb.velocity = new Vector2(0, 0);
+        }
     }
 
 }

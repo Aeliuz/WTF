@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 264877885}
   m_Layer: 0
   m_Name: Static Sprite (2)
-  m_TagString: Enemy
+  m_TagString: FallCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -969,13 +969,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264877884}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.6, y: -6.49, z: 0}
-  m_LocalScale: {x: 60.600483, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.18725857, w: 0.98231065}
+  m_LocalPosition: {x: 58.1557, y: 7.8426, z: 0}
+  m_LocalScale: {x: 96.86726, y: 1.6268, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 21.586}
 --- !u!1001 &291847382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4888,6 +4888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriggerToChangeWorld
       objectReference: {fileID: 0}
+    - target: {fileID: 241515148086056945, guid: c67422f3d53f97c43b8f90bb12412bb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 454609474582588819, guid: c67422f3d53f97c43b8f90bb12412bb3, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -4902,15 +4906,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3604230373693934343, guid: c67422f3d53f97c43b8f90bb12412bb3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.2875
+      value: 14.932643
       objectReference: {fileID: 0}
     - target: {fileID: 3604230373693934343, guid: c67422f3d53f97c43b8f90bb12412bb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.92
+      value: 52.55
       objectReference: {fileID: 0}
     - target: {fileID: 3604230373693934343, guid: c67422f3d53f97c43b8f90bb12412bb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.54
+      value: 35.1626
       objectReference: {fileID: 0}
     - target: {fileID: 3604230373693934343, guid: c67422f3d53f97c43b8f90bb12412bb3, type: 3}
       propertyPath: m_LocalPosition.z
