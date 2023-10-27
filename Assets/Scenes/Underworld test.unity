@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 264877885}
   m_Layer: 0
   m_Name: Static Sprite (2)
-  m_TagString: FallCheck
+  m_TagString: FallReset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1936,6 +1936,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: nr2DialogPopUp
       objectReference: {fileID: 0}
+    - target: {fileID: 5376795792173572424, guid: dae714561bc92f146aa0a3df64881076, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7496876348346557798, guid: dae714561bc92f146aa0a3df64881076, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.7644367
@@ -2121,6 +2125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6727259903935038470, guid: f6d6309e8c1342e4b8b2b3335d28b213, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 655c5bed996876b498ef3d5b686020d9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2905,6 +2913,10 @@ PrefabInstance:
     - target: {fileID: 4580403390250384313, guid: fb0ee4195b8ce5e43ba50e7fc6aa3b4c, type: 3}
       propertyPath: m_Name
       value: BunnyPopUpLeft 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580403390250384313, guid: fb0ee4195b8ce5e43ba50e7fc6aa3b4c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8290633705260636821, guid: fb0ee4195b8ce5e43ba50e7fc6aa3b4c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3785,6 +3797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: nr3DialogPopUp
       objectReference: {fileID: 0}
+    - target: {fileID: 6321815775996256480, guid: ab2ae6010f4d77f4b88c67a2cb2be3ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3863,6 +3879,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: nr1DialogPopUp
       objectReference: {fileID: 0}
+    - target: {fileID: 3261626367299273210, guid: a475eea1daa97f34490a4baaa05afc4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4365438189903249914, guid: a475eea1daa97f34490a4baaa05afc4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.452901
@@ -3919,6 +3939,10 @@ PrefabInstance:
     - target: {fileID: 4580403390250384313, guid: fb0ee4195b8ce5e43ba50e7fc6aa3b4c, type: 3}
       propertyPath: m_Name
       value: BunnyPopUpLeft 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580403390250384313, guid: fb0ee4195b8ce5e43ba50e7fc6aa3b4c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6718674250074832143, guid: fb0ee4195b8ce5e43ba50e7fc6aa3b4c, type: 3}
       propertyPath: m_FlipX
@@ -6290,6 +6314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BunnyPopUpLeft 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4580403390250384313, guid: fb0ee4195b8ce5e43ba50e7fc6aa3b4c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8290633705260636821, guid: fb0ee4195b8ce5e43ba50e7fc6aa3b4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.09
@@ -6859,6 +6887,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6727259903935038470, guid: f6d6309e8c1342e4b8b2b3335d28b213, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 655c5bed996876b498ef3d5b686020d9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
