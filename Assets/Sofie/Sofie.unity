@@ -1474,11 +1474,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138328301}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 866416804a6cb6c459eb60c3cea8ebdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallCheck: {fileID: 3681888718387555007, guid: 33d04fee4e1382d46b0ddb1d227d9d96, type: 3}
   jumpForce: 6
   maxSpeed: 7
   acceleration: 30
@@ -1492,7 +1493,6 @@ MonoBehaviour:
   velocityX: 0
   dash_pause: 0
   isDashing: 0
-  overworld: 1
 --- !u!114 &1138328305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1596,26 +1596,27 @@ MonoBehaviour:
   maxSpeed: 7
   acceleration: 30
   deacceleration: 4
---- !u!114 &1138328310
-MonoBehaviour:
+--- !u!95 &1138328310
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138328301}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe78988b5c9a5843b5fcab9ab05af62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 6
-  maxSpeed: 7
-  acceleration: 30
-  deacceleration: 4
-  coyote: 0.4
-  stop: 0.1
-  dash_power: 10
-  dashes: 5
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1142595011
 GameObject:
   m_ObjectHideFlags: 0
